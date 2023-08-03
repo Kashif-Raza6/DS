@@ -7,7 +7,7 @@ import openai
 import pandas as pd
 import streamlit as st
 from langchain.agents import create_csv_agent, create_pandas_dataframe_agent
-from langchain.llms import OpenAI
+from langchain.llms import OpenAI, ChatOpenAI
 
 # Retrieve the OpenAI API key from the Streamlit secrets manager
 st.sidebar.markdown("### OpenAI API Key")
@@ -42,7 +42,7 @@ def get_answer_csv(file: TextIO, query: str) -> str:
     #df = pd.read_csv("titanic.csv")
 
     # Create an agent using OpenAI and the Pandas dataframe
-    agent = create_csv_agent(OpenAI(temperature=0, openai_api_key = OPENAI_API_KEY), file, verbose=False)
+    agent = create_csv_agent(ChatOpenAI(temperature=0, openai_api_key = OPENAI_API_KEY, , model="gpt-3.5-turbo-0613"), file, verbose=False)
     #agent = create_pandas_dataframe_agent(OpenAI(temperature=0), df, verbose=False)
 
     # Run the agent on the given query and return the answer
