@@ -7,7 +7,8 @@ import openai
 import pandas as pd
 import streamlit as st
 from langchain.agents import create_csv_agent, create_pandas_dataframe_agent
-from langchain.llms import OpenAI, ChatOpenAI
+from langchain.llms import OpenAI
+from langchain.chat_models import ChatOpenAI
 
 # Retrieve the OpenAI API key from the Streamlit secrets manager
 st.sidebar.markdown("### OpenAI API Key")
